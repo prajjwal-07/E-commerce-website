@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <link rel="icon" href="data:,">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+    {{>header}}
+    <h1>you are in home page</h1>
+    <div class="row">
+        <div class="col-xs-12 col-md-3">
+            <h3>Categories</h3>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="/product/">All product</a></li>
+                {{#each category}}
+                <li class="list-group-item"><a href="/product/{{this.title}}">{{this.title}}</a></li>
+                {{/each}}
+            </ul>
+
+        </div>
+        <div class="col-xs-12 col-md-8">
+            <div class="row product" style="margin-top: 20px;margin-bottom:20px">
+                {{#each product}}
+                <div class="col-xs-12 col-md-4" style="margin-top: 20px;margin-bottom:20px">
+                    <a href="#" style="display:inline-block;">
+                        <img width="150px" height:"160px" src="/product_img/{{this._id}}/{{this.image}}">
+                    </a>
+                    <h3>{{this.title}}</h3>
+                    <h4>Rs {{this.price}}</h4>
+                    <a href="/product/{{this.category}}">{{this.category}}</a>
+                    <a href="/cart/add/{{this.title}}"><i class="fas fa-shopping-cart fa-2x"></i></a>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+        
+    </div>
+    {{>footer}}
+</body>
+ 
+</html>
